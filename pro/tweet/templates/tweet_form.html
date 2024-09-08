@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block title %}
+My Social Platform
+{% endblock %}
+
+{% block content %}
+
+<h1 class="text-center  mt-4">Welcome to My Social Platform</h1>
+
+<h2> 
+  {%if form.instance.pk %} 
+  Edit Post
+  {% else %} 
+  Create Post
+  {% endif %} 
+  <form  method="post" enctype="multipart/form-data" class="form">
+     {% csrf_token %}
+    {{ form.as_p }}
+    <button class="btn btn-warning" type="submit">Submit</button>
+  </form>
+  <a href="{% url 'tweet_list' %}">Back to Post list</a>
+</h2>
+
+{% endblock %}
